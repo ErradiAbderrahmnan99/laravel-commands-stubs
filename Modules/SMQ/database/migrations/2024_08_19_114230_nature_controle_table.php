@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('nature_controle_table', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('{{ table_name }}');
+        Schema::dropIfExists('nature_controle_table');
     }
 };
