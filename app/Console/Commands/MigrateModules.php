@@ -12,20 +12,20 @@ class MigrateModules extends Command
     protected $description = 'Run migrations for all modules';
 
     //If you don't use ModuleMigrationServiceProvider
-//    public function handle()
-//    {
-//        $modules = [
-//            'SMQ',
-//        ];
-//
-//        foreach ($modules as $module) {
-//            $this->info("Migrating module: {$module}");
-//            Artisan::call('migrate:fresh', ['--path' => "Modules/{$module}/Database/Migrations"]);
-//            $this->info(Artisan::output());
-//        }
-//
-//        $this->info('Migrations completed for all modules.');
-//    }
+    //    public function handle()
+    //    {
+    //        $modules = [
+    //            'SMQ',
+    //        ];
+    //
+    //        foreach ($modules as $module) {
+    //            $this->info("Migrating module: {$module}");
+    //            Artisan::call('migrate:fresh', ['--path' => "Modules/{$module}/Database/Migrations"]);
+    //            $this->info(Artisan::output());
+    //        }
+    //
+    //        $this->info('Migrations completed for all modules.');
+    //    }
 
     public function handle()
     {
