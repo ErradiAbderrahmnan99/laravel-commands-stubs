@@ -1,0 +1,30 @@
+<?php 
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\Api\ApiCrudBaseController;
+use Modules\{{ module }}\Requests\{{ name }}Request;
+use Modules\{{ module }}\Resources\{{ name }}Resource;
+use Modules\{{ module }}\Models\{{ name }};
+
+
+class {{ name }}Controller extends ApiCrudBaseController
+{
+    protected string $modelClass = {{ name }}::class;
+
+    protected string $resourceClass = {{ name }}Resource::class;
+
+    protected array $relations = [];
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->rules = [
+            'store' => {{ name }}Request::class,
+            'update' => {{ name }}Request::class,
+        ];
+    }
+}
+

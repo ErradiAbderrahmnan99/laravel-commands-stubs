@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ namespace }};
+
+use Tests\Main\mainCrudTests;
+use Modules\{{ module }}\Models\{{ name }};
+use Illuminate\Database\Eloquent\Model;
+
+class {{ name }}Test extends mainCrudTests
+{
+     protected Model|string $modelClass = {{ name }}::class;
+
+    protected array $options = [];
+
+    protected string $route = '';
+}

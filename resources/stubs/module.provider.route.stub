@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use App\Http\Middleware\ForceJsonResponse;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        parent::boot();
+        $this->routes(function () {
+            Route::middleware(['api', ForceJsonResponse::class])
+                ->prefix('api/v1')
+                ->group(__DIR__.'/../routes/api.php');
+        });
+    }
+}

@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use Modules\{{ module }}\Controllers\{{ name }}Controller;
+
+$name = Str::plural('{{ route_name }}');
+
+Route::prefix($name)
+    ->name("{$name}.")
+    ->middleware(['auth:api'])
+    ->controller({{ name }}Controller::class)->group(function () {
+        Route::get(uri: 'trashed', action: 'getTrashed')->name('trashed');
+        Route::patch(uri: 'restore/{{{ route_name }}}', action: 'restore')->name('restore');
+        Route::delete(uri: 'force-delete/{{{ route_name }}}', action: 'forceDelete')->name('force-delete');
+
+        Route::delete(uri: 'multiple-delete', action: 'multipleDelete')->name('multiple-delete');
+        Route::patch(uri: 'multiple-restore', action: 'multipleRestore')->name('multiple-restore');
+        Route::delete(uri: 'multiple-force-delete', action: 'multipleForceDelete')->name('multiple-force-delete');
+    });
+Route::apiResource(name: $name, controller: {{ name }}Controller::class)->middleware(['auth:api']);
