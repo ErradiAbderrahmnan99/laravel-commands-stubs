@@ -1,10 +1,10 @@
 <?php
 
-namespace {{ namespace }};
+namespace Modules\Commande\Http\Requests\Type;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class {{ name }}Request extends FormRequest
+class TypeCommandeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

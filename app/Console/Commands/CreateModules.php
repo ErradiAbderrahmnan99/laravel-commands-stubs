@@ -51,16 +51,11 @@ class CreateModules extends Command
 
     protected function createStubFiles(string $name): void
     {
-        // Here you would use your StubHelper class or a similar approach to generate files from stubs.
-        // This is an example of how you might manually create files.
-
         $fs = new Filesystem();
-        $stubPath = resource_path('stubs'); // Assuming you store your stubs here
+        $stubPath = resource_path('stubs');
         $modulePath = base_path('Modules/' . $name);
 
         $stubs = [
-//            'module.provider.stub' => "Providers/{$name}ServiceProvider.php",
-//            'module.provider.route.stub' => "Providers/RouteServiceProvider.php",
             'module.route.stub' => 'routes/api.php',
             'module.config.stub' => 'config.php',
         ];

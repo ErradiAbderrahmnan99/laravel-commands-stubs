@@ -18,7 +18,7 @@ class CreateModuleMigration extends Command
         $folderName = $this->argument('folderName');
 
         $timestamp = date('Y_m_d_His');
-        $migrationName = $timestamp . '_' . $name . '_table';
+        $migrationName = $timestamp . '_' . Str::snake($name) . '_table';
         $migrationPath = base_path("Modules/{$module}/database/Migrations");
 
         if ($folderName) {
@@ -37,7 +37,7 @@ class CreateModuleMigration extends Command
         // Replace placeholders in the stub
         $stub = str_replace(
             ['{{ tableName }}'],
-            [$name],
+            [Str::snake($name)],
             $stub
         );
 

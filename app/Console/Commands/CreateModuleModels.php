@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CreateModuleModels extends Command
 {
@@ -34,7 +35,7 @@ class CreateModuleModels extends Command
         // Replace placeholders in the stub
         $stub = str_replace(
             ['{{ namespace }}', '{{ name }}', '{{ table }}'],
-            ["Modules\\{$module}\\Models" . ($folderName ? "\\{$folderName}" : ""), $name, strtolower($name)],
+            ["Modules\\{$module}\\Models" . ($folderName ? "\\{$folderName}" : ""), $name, Str::snake($name)],
             $stub
         );
 

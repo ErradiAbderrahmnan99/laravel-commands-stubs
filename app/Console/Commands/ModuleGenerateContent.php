@@ -54,7 +54,18 @@ class ModuleGenerateContent extends Command
             'folderName' => $folderName
         ]);
 
+        $this->call('make:module-request', [
+            'module' => $module,
+            'name' => $name,
+            'folderName' => $folderName
+        ]);
+
+        $this->call('make:module-resource', [
+            'module' => $module,
+            'name' => $name,
+            'folderName' => $folderName
+        ]);
+
         $this->info('All module-related files have been generated successfully.');
     }
-
 }
