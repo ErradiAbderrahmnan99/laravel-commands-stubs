@@ -15,7 +15,7 @@ class TypeCommandeFactory extends Factory
     public function definition(): array
     {
         return [
-            // Define your model's attributes here
+            'name' => $this->faker->name(),
         ];
     }
 }

@@ -4,11 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Modules\Commande\Controllers\Type\TypeCommandeController;
 
-$name = Str::plural('type-commande');
+$name = Str::plural('typeCommande');
 
 Route::prefix($name)
     ->name("{$name}.")
-    ->middleware(['auth:api'])
     ->controller(TypeCommandeController::class)->group(function () {
-
+        Route::get(uri: '/', action: 'index')->name("typeCommande.index");
     });

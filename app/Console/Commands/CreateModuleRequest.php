@@ -17,7 +17,7 @@ class CreateModuleRequest extends Command
         $folderName = $this->argument('folderName');
 
         // Construct the file path
-        $requestPath = base_path("Modules/{$module}/Http/Requests");
+        $requestPath = base_path("Modules/{$module}/Requests");
         if ($folderName) {
             $requestPath .= "/{$folderName}";
         }
@@ -35,7 +35,7 @@ class CreateModuleRequest extends Command
         // Replace placeholders in the stub
         $stub = str_replace(
             ['{{ namespace }}', '{{ name }}'],
-            ["Modules\\{$module}\\Http\\Requests" . ($folderName ? "\\{$folderName}" : ""), $name],
+            ["Modules\\{$module}\\Requests" . ($folderName ? "\\{$folderName}" : ""), $name],
             $stub
         );
 

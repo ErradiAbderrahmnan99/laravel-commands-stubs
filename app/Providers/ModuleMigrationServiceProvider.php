@@ -20,7 +20,7 @@ class ModuleMigrationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $modules = [
-            'SMQ',
+            'Commande',
         ];
 
         foreach ($modules as $module) {

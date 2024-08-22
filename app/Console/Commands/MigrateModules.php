@@ -32,7 +32,9 @@ class MigrateModules extends Command
         $this->info("Running module migrations...");
 
         // Run the standard Laravel migrate command
-        Artisan::call('migrate');
+        Artisan::call('migrate:fresh');
+
+        $this->info(Artisan::output());
 
         $this->info("Module migrations completed.");
     }

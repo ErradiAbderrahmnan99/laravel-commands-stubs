@@ -15,15 +15,11 @@ class CreateModuleMigration extends Command
     {
         $module = $this->argument('module');
         $name = $this->argument('name');
-        $folderName = $this->argument('folderName');
 
         $timestamp = date('Y_m_d_His');
         $migrationName = $timestamp . '_' . Str::snake($name) . '_table';
         $migrationPath = base_path("Modules/{$module}/database/Migrations");
 
-        if ($folderName) {
-            $migrationPath .= "/{$folderName}";
-        }
 
         $migrationPath .= "/{$migrationName}.php";
 
@@ -47,6 +43,6 @@ class CreateModuleMigration extends Command
         // Create the migration file
         File::put($migrationPath, $stub);
 
-        $this->info("Migration {$migrationName} created successfully in module {$module}" . ($folderName ? " in folder {$folderName}" : "") . ".");
+        $this->info("Migration {$migrationName} created successfully in module {$module} .");
     }
 }

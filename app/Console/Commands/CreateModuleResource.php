@@ -17,7 +17,7 @@ class CreateModuleResource extends Command
         $folderName = $this->argument('folderName');
 
         // Construct the file path
-        $resourcePath = base_path("Modules/{$module}/Http/Resources");
+        $resourcePath = base_path("Modules/{$module}/Resources");
         if ($folderName) {
             $resourcePath .= "/{$folderName}";
         }
@@ -35,7 +35,7 @@ class CreateModuleResource extends Command
         // Replace placeholders in the stub
         $stub = str_replace(
             ['{{ namespace }}', '{{ name }}'],
-            ["Modules\\{$module}\\Http\\Resources" . ($folderName ? "\\{$folderName}" : ""), $name],
+            ["Modules\\{$module}\\Resources" . ($folderName ? "\\{$folderName}" : ""), $name],
             $stub
         );
 

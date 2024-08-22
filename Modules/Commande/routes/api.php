@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 $routeGroups = [
+    "Type/TypeCommande",
 
 ];
 foreach ($routeGroups as $group) {
