@@ -1,11 +1,11 @@
 <?php
 
-namespace {{ namespace }};
+namespace Modules\SMQ\database\seeders\Type;
 
 use Illuminate\Database\Seeder;
-use {{ modelImport }};
+use Modules\SMQ\Models\Type\TypeCommand;
 
-class {{ seederName }} extends Seeder
+class TypeCommandSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -16,6 +16,6 @@ class {{ seederName }} extends Seeder
     {
         // Insert seed data here
         // Example:
-        // {{ modelName }}::factory()->count(10)->create();
+        // TypeCommand::factory()->count(10)->create();
     }
 }

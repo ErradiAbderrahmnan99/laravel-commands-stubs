@@ -1,15 +1,15 @@
 <?php
 
-namespace {{ namespace }};
+namespace Modules\SMQ\Models\Nature;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class {{ name }} extends Model
+class Nature extends Model
 {
     use HasFactory;
 
-    protected $table = '{{ table }}';
+    protected $table = 'nature';
 
     protected $guarded = ["id"];
 }

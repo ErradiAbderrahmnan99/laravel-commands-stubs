@@ -7,15 +7,22 @@ use Illuminate\Support\Facades\File;
 
 class CreateModuleModels extends Command
 {
-    protected $signature = 'make:module-model {module} {name}';
-    protected $description = 'Create a new model in the specified module';
-
+    protected $signature = 'make:module-model {module} {name} {folderName?}';
+    protected $description = 'Create a new model in the specified module and optionally in a folder';
 
     public function handle()
     {
         $module = $this->argument('module');
         $name = $this->argument('name');
-        $modelPath = base_path("Modules/{$module}/Models/{$name}.php");
+        $folderName = $this->argument('folderName');
+
+        $modelPath = base_path("Modules/{$module}/Models");
+
+        if ($folderName) {
+            $modelPath .= "/{$folderName}";
+        }
+
+        $modelPath .= "/{$name}.php";
 
         if (File::exists($modelPath)) {
             $this->error("Model {$name} already exists in module {$module}.");
@@ -27,7 +34,7 @@ class CreateModuleModels extends Command
         // Replace placeholders in the stub
         $stub = str_replace(
             ['{{ namespace }}', '{{ name }}', '{{ table }}'],
-            ["Modules\\{$module}\\Models", $name, strtolower($name)],
+            ["Modules\\{$module}\\Models" . ($folderName ? "\\{$folderName}" : ""), $name, strtolower($name)],
             $stub
         );
 
@@ -37,6 +44,6 @@ class CreateModuleModels extends Command
         // Create the model file
         File::put($modelPath, $stub);
 
-        $this->info("Model {$name} created successfully in module {$module}.");
+        $this->info("Model {$name} created successfully in module {$module}" . ($folderName ? " in folder {$folderName}" : "") . ".");
     }
 }

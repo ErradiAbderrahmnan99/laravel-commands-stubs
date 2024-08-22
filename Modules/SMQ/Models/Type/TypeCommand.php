@@ -1,15 +1,15 @@
 <?php
 
-namespace {{ namespace }};
+namespace Modules\SMQ\Models\Type;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class {{ name }} extends Model
+class TypeCommand extends Model
 {
     use HasFactory;
 
-    protected $table = '{{ table }}';
+    protected $table = 'typecommand';
 
     protected $guarded = ["id"];
 }

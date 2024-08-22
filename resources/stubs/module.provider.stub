@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace {{ namespace }};
 
 use Illuminate\Support\ServiceProvider;
@@ -23,13 +21,13 @@ class {{ name }}ServiceProvider extends ServiceProvider
     {
         $config = require base_path('migration.config.php');
         $modules = $config['modules'];
-        
+
         // check if the module is enabled
         if ($modules['{{ name }}']) {
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
             $this->mergeConfigFrom(__DIR__.'/../config.php', 'accounting');
         }
-        
+
         /**
          *  register the service provider.
          */

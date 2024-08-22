@@ -1,16 +1,16 @@
 <?php
 
-namespace {{ namespace }};
+namespace Modules\SMQ\database\factories\Type;
 
-use {{ modelImport }};
+use Modules\SMQ\Models\Type\TypeCommand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<{{ modelName }}>
+ * @extends Factory<TypeCommand>
  */
-class {{ factoryName }} extends Factory
+class TypeCommandFactory extends Factory
 {
-    protected $model = {{ modelName }}::class;
+    protected $model = TypeCommand::class;
 
     public function definition(): array
     {

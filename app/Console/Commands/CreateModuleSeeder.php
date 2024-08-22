@@ -8,27 +8,41 @@ use Illuminate\Support\Str;
 
 class CreateModuleSeeder extends Command
 {
-    protected $signature = 'make:module-seeder {module} {name}';
-    protected $description = 'Create a new seeder in the specified module';
+    protected $signature = 'make:module-seeder {module} {name} {folderName?}';
+    protected $description = 'Create a new seeder in the specified module and optionally in a folder';
 
     public function handle()
     {
         $module = $this->argument('module');
         $name = $this->argument('name');
+        $folderName = $this->argument('folderName');
+
         $seederName = $name . 'Seeder';
-        $seederPath = base_path("Modules/{$module}/database/seeders/{$seederName}.php");
+        $seederPath = base_path("Modules/{$module}/database/seeders");
+
+        if ($folderName) {
+            $seederPath .= "/{$folderName}";
+        }
+
+        $seederPath .= "/{$seederName}.php";
 
         if (File::exists($seederPath)) {
             $this->error("Seeder {$seederName} already exists in module {$module}.");
             return;
         }
 
+        $modelImport = "Modules\\{$module}\\Models";
+        if ($folderName) {
+            $modelImport .= "\\{$folderName}";
+        }
+        $modelImport .= "\\{$name}";
+
         $stub = File::get(base_path('resources/stubs/module.seeder.stub'));
 
         // Replace placeholders in the stub
         $stub = str_replace(
-            ['{{ namespace }}', '{{ module }}', '{{ seederName }}', '{{ modelName }}'],
-            ["Modules\\{$module}\\database\\seeders", $module , $seederName, $name],
+            ['{{ namespace }}', '{{ modelImport }}', '{{ seederName }}', '{{ modelName }}'],
+            ["Modules\\{$module}\\database\\seeders" . ($folderName ? "\\{$folderName}" : ""), $modelImport, $seederName, $name],
             $stub
         );
 
@@ -38,6 +52,6 @@ class CreateModuleSeeder extends Command
         // Create the seeder file
         File::put($seederPath, $stub);
 
-        $this->info("Seeder {$seederName} created successfully in module {$module}.");
+        $this->info("Seeder {$seederName} created successfully in module {$module}" . ($folderName ? " in folder {$folderName}" : "") . ".");
     }
 }

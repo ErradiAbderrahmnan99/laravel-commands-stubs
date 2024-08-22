@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\SMQ\database\seeders;
+namespace Modules\SMQ\database\seeders\Nature;
 
 use Illuminate\Database\Seeder;
-use Modules\SMQ\Models\NatureControle;
+use Modules\SMQ\Models\Nature\Nature;
 
-class NatureControleSeeder extends Seeder
+class NatureSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -16,6 +16,6 @@ class NatureControleSeeder extends Seeder
     {
         // Insert seed data here
         // Example:
-        // NatureControle::factory()->count(10)->create();
+         Nature::factory()->count(10)->create();
     }
 }
