@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\Commande\database\seeders\Type\TypeCommandeSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +14,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $moduleSeeders = [
+            'Commande' => true,
+        ];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($moduleSeeders as $moduleName => $isActive) {
+            if ($isActive) {
+                $seederClass = "Modules\\$moduleName\\Database\\Seeders\\{$moduleName}Seeder";
+
+                if (class_exists($seederClass)) {
+                    $this->call($seederClass);
+                } else {
+                    $this->command->warn("Seeder class $seederClass not found.");
+                }
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ class TypeCommandeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // Define your validation rules here
+
         ];
     }
 }

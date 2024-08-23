@@ -16,6 +16,6 @@ class TypeCommandeSeeder extends Seeder
     {
         // Insert seed data here
         // Example:
-         TypeCommande::factory()->count(10)->create();
+        TypeCommande::factory()->count(10)->create();
     }
 }

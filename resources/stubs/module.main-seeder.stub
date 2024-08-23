@@ -1,0 +1,15 @@
+<?php
+
+namespace Modules\{{ ModuleName }}\database\seeders;
+
+use Illuminate\Database\Seeder;
+
+class {{ ModuleName }}Seeder extends Seeder {
+
+    public function run(){
+//        $this->call(
+//            Add seeder here
+//        );
+    }
+
+}

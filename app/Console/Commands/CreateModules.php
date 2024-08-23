@@ -56,13 +56,14 @@ class CreateModules extends Command
         $modulePath = base_path('Modules/' . $name);
 
         $stubs = [
+            'module.main-seeder.stub' => 'database/seeders/' . $name . 'Seeder.php',
             'module.route.stub' => 'routes/api.php',
             'module.config.stub' => 'config.php',
         ];
 
         foreach ($stubs as $stub => $destination) {
             $content = $fs->get($stubPath . '/' . $stub);
-            $content = str_replace('{{ModuleName}}', $name, $content);
+            $content = str_replace('{{ ModuleName }}', $name, $content);
 
             $fs->put($modulePath . '/' . $destination, $content);
         }
