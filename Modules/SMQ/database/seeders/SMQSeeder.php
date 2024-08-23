@@ -8,7 +8,7 @@ class SMQSeeder extends Seeder {
 
     public function run(){
 //        $this->call(
-//            Add seeder here
+//            Add seeders class here
 //        );
     }
 
